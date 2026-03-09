@@ -3,7 +3,7 @@
 Este software foi desenvolvido em conformidade com a **ISO 56005:2020**, que orienta a gestão da propriedade intelectual em processos de inovação.  
 Foram adotadas práticas de documentação de autoria (controle de versões em Git), definição de licença de uso e análise de riscos relacionados ao uso de bibliotecas externas, garantindo a proteção e valorização do resultado inovador.
 
-Este é um **Projeto de Extensão Universitária (Pex IV)**, realizado como atividade acadêmica de impacto social no CST em Ciência de Dados (UniAmérica Descomplica - 3º Semestre).
+Este é um **Projeto de Extensão Universitária (Pex IV)**, realizado como atividade acadêmica de impacto social no CST em Ciência de Dados (UniAmérica Descomplica - 4º Semestre).
 ---
 
 # ⚖️ DIREITOS AUTORAIS E PROPRIEDADE INTELECTUAL
@@ -99,7 +99,7 @@ Este é um **Projeto de Extensão Universitária (Pex IV)**, realizado como ativ
 ### 🎓 **Autor Original**
 - **Nome:** Delean P. Mafra  
 - **Curso:** CST em Ciência de Dados  
-- **Semestre:** 3º Semestre  
+- **Semestre:** 4º Semestre  
 - **Instituição:** Descomplica Faculdade Digital / UniAmérica  
 - **Projeto:** Projeto de Extensão IV (Pex IV)  
 - **Data:** 2026  
@@ -120,3 +120,38 @@ Este é um **Projeto de Extensão Universitária (Pex IV)**, realizado como ativ
 ### ✉️ **Atribuição Correta**
 Para usar, modificar ou referir-se a este projeto, utilize:
 
+Autor: Delean P. Mafra
+Licença: CC BY-NC 4.0
+Projeto: Projeto de Extensão IV
+Ano: 2026
+
+
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📝 **OBSERVAÇÕES IMPORTANTES**
+
+### Para Uso Educacional
+Este projeto é fornecido como recurso educacional. Professores, pesquisadores e alunos podem utilizar, estudar e adaptar o código para fins não-comerciais, desde que mantenham a atribuição ao autor original.
+
+### Para Uso Comercial
+Qualquer intenção de comercializar, integrar em produto comercial ou oferecer como serviço remunerado requer **autorização expressa e escrita** do autor. Entre em contato para negociar termos específicos.
+
+### Para Produção em Empresas
+Se uma empresa deseja utilizar esta solução ou conceitos semelhantes em ambiente de produção, é necessário:
+
+1. ✅ Solicitar licença comercial ao autor  
+2. ✅ Negociar termos de uso  
+3. ✅ Estabelecer contrato de propriedade intelectual  
+
+---
+
+**Última atualização:** Março de 2026  
+
+**DOI:** *(em definição)*  
+
+**Copyright © Delean Mafra - Todos os direitos reservados.*
