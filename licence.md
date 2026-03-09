@@ -123,8 +123,8 @@ Para usar, modificar ou referir-se a este projeto, utilize:
 ```
 Autor: Delean P. Mafra
 Licença: CC BY-NC 4.0
-Projeto: Financeiro Pro - Projeto de Extensão III
-Ano: 2025/2026
+Projeto: Projeto de Extensão IV
+Ano: 2026
 ```
 
 </td>
