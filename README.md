@@ -4,12 +4,10 @@
 
 Ciência de Dados • Delean Plince Mafra
 
-[Centro Universitário União das Américas Descomplica]{.small}
+Centro Universitário União das Américas Descomplica
 
 </div>
 
-::: container
-::: {.card .text-content}
 ## 📌 Sobre o Projeto e Desenvolvimento das Atividades
 
 Este projeto de extensão foi desenvolvido em parceria com uma
@@ -23,9 +21,7 @@ do Termo de Autorização para Realização das Atividades Extensionistas,
 iniciei oficialmente o desenvolvimento do projeto. O principal objetivo
 foi transformar dados financeiros em informações visuais e estratégicas,
 facilitando a tomada de decisão.
-:::
 
-::: {.card .text-content}
 ## 📊 Planejamento da Coleta de Dados e Problema Identificado
 
 A primeira etapa consistiu na elaboração de um plano de coleta de dados,
