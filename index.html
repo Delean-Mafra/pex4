@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEX IV - Ciência de Dados</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f172a;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(90deg, #1e293b, #0ea5e9);
+    padding: 40px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+header p {
+    opacity: 0.8;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: #1e293b;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #38bdf8;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 8px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-content p {
+    text-align: justify;
+    margin-bottom: 15px;
+    color: #cbd5e1;
+}
+
+ul {
+    padding-left: 20px;
+    color: #cbd5e1;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.badge {
+    background: #0ea5e9;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.references-list li {
+    word-break: break-all;
+    margin-bottom: 12px;
+}
+
+.references-list a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.references-list a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9em;
+    opacity: 0.7;
+    background: #1e293b;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Projeto de Extensão IV</h1>
+    <p>Ciência de Dados • Delean Plince Mafra</p>
+    <p><small>Centro Universitário União das Américas Descomplica</small></p>
+</header>
+
+<div class="container">
+
+<div class="card text-content">
+    <h2>📌 Sobre o Projeto e Desenvolvimento das Atividades</h2>
+    <p>
+        Este projeto de extensão foi desenvolvido em parceria com uma organização parceira, 
+        com foco na melhoria da análise financeira através de técnicas de Ciência de Dados.
+    </p>
+    <p>
+        Para dar início ao projeto, preenchi a Carta de Apresentação e selecionei a instituição parceira 
+        para a realização das atividades. Após a apresentação da proposta e a obtenção da autorização formal 
+        por meio do Termo de Autorização para Realização das Atividades Extensionistas, iniciei oficialmente o 
+        desenvolvimento do projeto. O principal objetivo foi transformar dados financeiros em informações visuais 
+        e estratégicas, facilitando a tomada de decisão.
+    </p>
+</div>
+
+<div class="card text-content">
+    <h2>📊 Planejamento da Coleta de Dados e Problema Identificado</h2>
+    <p>
+        A primeira etapa consistiu na elaboração de um plano de coleta de dados, no qual defini as fontes de informação 
+        que seriam utilizadas durante o projeto. Foram considerados dados obtidos por meio de interfaces de programação 
+        de aplicações (APIs) disponibilizadas pela organização, bem como informações provenientes de sua base de dados interna.
+    </p>
+    <p>
+        Durante essa fase, identifiquei as variáveis relevantes e os fatores que influenciavam diretamente os problemas 
+        enfrentados pela organização. A análise inicial evidenciou que a principal dificuldade estava relacionada à baixa 
+        visibilidade das informações financeiras referentes às contas a pagar e às contas a receber.
+    </p>
+    <p>
+        Embora a organização já dispusesse de relatórios financeiros tradicionais e da Demonstração do Resultado do 
+        Exercício (DRE), esses documentos apresentavam os dados de forma predominantemente textual e tabular, dificultando 
+        a identificação de tendências, sazonalidades e variações das receitas e despesas ao longo do tempo. Essa limitação 
+        comprometia a agilidade e a qualidade do processo de tomada de decisão pelos gestores.
+    </p>
+</div>
+
+<div class="card text-content">
+    <h2>🧠 Coleta de Informações</h2>
+    <p>
+        A coleta das informações foi realizada utilizando os recursos disponibilizados pela própria organização. 
+        Os dados estruturados foram obtidos por meio da API corporativa, responsável pelo acesso às informações 
+        armazenadas no banco de dados relacional utilizado pela empresa.
+    </p>
+    <p>
+        A organização autorizou o acesso à estrutura do banco de dados para fins exclusivamente acadêmicos e de 
+        desenvolvimento da solução proposta. Embora o ambiente utilizasse uma ferramenta específica para consultas 
+        ao banco de dados, optei por utilizar o Visual Studio Code em conjunto com Python, empregando a biblioteca 
+        FDB para comunicação com o banco de dados e a extensão SQLTools para desenvolvimento e validação das consultas SQL.
+    </p>
+    <p>
+        Como medida adicional de segurança da informação, desenvolvi uma biblioteca responsável por realizar a leitura 
+        automática das configurações de conexão existentes nos arquivos de configuração utilizados pela organização. 
+        As credenciais passaram a ser tratadas de forma criptografada, evitando sua exposição direta no código-fonte 
+        e reduzindo o risco de vazamento de informações sensíveis.
+    </p>
+    <p>
+        Para garantir conformidade com a Lei Geral de Proteção de Dados (LGPD), limitei a coleta exclusivamente aos 
+        registros financeiros necessários para a execução do projeto. Não foram acessados ou processados dados pessoais 
+        de clientes, fornecedores ou colaboradores, restringindo a análise às informações relacionadas aos lançamentos 
+        financeiros utilizados na elaboração dos indicadores e das visualizações.
+    </p>
+</div>
+
+<div class="card">
+    <h2>⚙️ Tecnologias Utilizadas</h2>
+    <div class="grid">
+        <div class="badge">Flask</div>
+        <div class="badge">Flask-WTF</div>
+        <div class="badge">WTForms</div>
+        <div class="badge">Werkzeug</div>
+        <div class="badge">fdb</div>
+        <div class="badge">pandas</div>
+        <div class="badge">python-dateutil</div>
+        <div class="badge">matplotlib</div>
+        <div class="badge">pdfplumber</div>
+        <div class="badge">pikepdf</div>
+        <div class="badge">psutil</div>
+        <div class="badge">lxml</div>
+        <div class="badge">cryptography</div>
+        <div class="badge">cv2 (OpenCV)</div>
+        <div class="badge">numpy</div>
+        <div class="badge">pyzbar</div>
+        <div class="badge">pyperclip</div>
+        <div class="badge">argparse</div>
+        <div class="badge">base64</div>
+        <div class="badge">collections</div>
+        <div class="badge">csv</div>
+        <div class="badge">dataclasses</div>
+        <div class="badge">datetime</div>
+        <div class="badge">decimal</div>
+        <div class="badge">hashlib</div>
+        <div class="badge">io</div>
+        <div class="badge">logging</div>
+        <div class="badge">os</div>
+        <div class="badge">pathlib</div>
+        <div class="badge">re</div>
+        <div class="badge">secrets</div>
+        <div class="badge">shutil</div>
+        <div class="badge">string</div>
+        <div class="badge">subprocess</div>
+        <div class="badge">sys</div>
+        <div class="badge">tempfile</div>
+        <div class="badge">threading</div>
+        <div class="badge">time</div>
+        <div class="badge">traceback</div>
+        <div class="badge">typing</div>
+        <div class="badge">warnings</div>
+        <div class="badge">webbrowser</div>
+        <div class="badge">xml.etree.ElementTree</div>
+        <div class="badge">zipfile</div>
+    </div>
+</div>
+
+<div class="card text-content">
+    <h2>📈 Organização e Análise dos Dados</h2>
+    <p>
+        Os dados disponibilizados pela organização já se encontravam estruturados, reduzindo significativamente a 
+        necessidade de procedimentos de limpeza e transformação. Dessa forma, concentrei os esforços na organização 
+        estratégica das informações e na construção de análises capazes de gerar conhecimento útil para a organização.
+    </p>
+    <p>
+        As atividades foram desenvolvidas utilizando SQL para extração das informações e Python para processamento, 
+        análise e apresentação dos resultados. Entre as principais bibliotecas empregadas destacam-se Flask, FDB, 
+        Pandas, NumPy, Matplotlib, Flask-WTF, WTForms, Werkzeug, Python-Dateutil, Cryptography, LXML, OpenCV e 
+        outras bibliotecas auxiliares responsáveis por operações de processamento, segurança, geração de arquivos e automação.
+    </p>
+    <p>
+        As informações obtidas foram transformadas em representações gráficas por meio das bibliotecas Matplotlib e 
+        NumPy, possibilitando a criação de séries temporais, gráficos comparativos e análises de composição das despesas 
+        e receitas. Essas visualizações facilitaram a identificação de tendências, oscilações financeiras e fatores que 
+        impactavam diretamente o fluxo de caixa da organização.
+    </p>
+    <p>
+        Além da geração dos gráficos, desenvolvi uma aplicação web utilizando o framework Flask, responsável por 
+        integrar as consultas, os indicadores e as representações visuais em painéis interativos. Essa abordagem 
+        permitiu que os dados fossem consultados de forma dinâmica, oferecendo aos gestores uma visão consolidada 
+        das informações financeiras.
+    </p>
+    <p>
+        A etapa de análise ultrapassou o simples processamento técnico dos dados, buscando transformar informações 
+        isoladas em conhecimento capaz de apoiar decisões estratégicas. O cruzamento das informações permitiu compreender 
+        padrões de comportamento financeiro, identificar períodos de maior concentração de despesas e acompanhar a 
+        evolução das receitas ao longo do tempo.
+    </p>
+</div>
+
+<div class="card text-content">
+    <h2>📄 Produção do Relatório Técnico</h2>
+    <p>
+        Após a conclusão das etapas de coleta, organização e análise dos dados, elaborei um relatório técnico com o 
+        objetivo de consolidar todo o trabalho desenvolvido e documentar os principais resultados obtidos. Por questões 
+        de segurança da informação, a organização pediu para anonimizar informações técnicas sensíveis, omitindo nomes 
+        internos do banco de dados, estruturas específicas, caminhos de arquivos e demais elementos que pudessem comprometer 
+        a infraestrutura tecnológica da empresa. Dessa forma, foi possível apresentar toda a metodologia empregada sem expor 
+        informações confidenciais.
+    </p>
+    <p>
+        O relatório foi estruturado a partir das análises realizadas e das visualizações desenvolvidas durante o projeto. 
+        Foram incluídos gráficos de evolução temporal, comparativos entre períodos, análises de receitas e despesas e 
+        tabelas consolidadas contendo os principais indicadores financeiros. Complementando essas representações, elaborei 
+        descrições técnicas que contextualizam os resultados encontrados e explicam sua importância para a gestão financeira 
+        da organização.
+    </p>
+    <p>
+        As análises demonstraram que a utilização de painéis interativos e relatórios gráficos proporciona maior rapidez 
+        na identificação de tendências financeiras, reduz o tempo necessário para interpretação das informações e amplia 
+        a capacidade de acompanhamento dos indicadores ao longo do tempo. A comparação histórica também possibilitou 
+        identificar padrões que dificilmente seriam percebidos utilizando apenas relatórios convencionais.
+    </p>
+    <p>
+        Como resultado, a organização passou a dispor de uma solução capaz de apoiar o processo de tomada de decisão por 
+        meio da análise visual dos dados financeiros, permitindo identificar variações de receitas e despesas, acompanhar 
+        a evolução do fluxo de caixa e subsidiar o planejamento financeiro com base em evidências.
+    </p>
+</div>
+
+<div class="card">
+    <h2>🌐 Sistema Web e Soluções Desenvolvidas</h2>
+    <p>
+        Foi criada uma aplicação web com Flask contendo dashboards interativos, visualização em tempo real 
+        e consultas dinâmicas. Entre as soluções integradas no sistema estão:
+    </p>
+    <ul>
+        <li><strong>DRE Financeiro Automatizado:</strong> Painéis completos para visualização do resultado e saldo por conta.</li>
+        <li><strong>Análise de Gastos por Categoria:</strong> Evolução dos gastos mensais, variação percentual e detalhamento das contas.</li>
+        <li><strong>Relatório de Lançamentos Duplicados:</strong> Ferramenta para localizar possíveis registros financeiros duplicados no banco de dados.</li>
+        <li><strong>Conciliação Bancária (OFX):</strong> Compara e concilia os lançamentos bancários (arquivo OFX) com os lançamentos do banco de dados, acusando transações não encontradas.</li>
+        <li><strong>Extrator de Dados de Boletos:</strong> Faz o upload de PDFs (condomínio, faculdade), extrai dados automaticamente e atualiza diretamente no banco de dados, eliminando o lançamento manual.</li>
+        <li><strong>Análise de Financiamento:</strong> Acompanha a evolução e variação percentual dos juros ao longo do tempo.</li>
+        <li><strong>Relatório de Gastos:</strong> Filtra valores por período, detalhando os centros de custos.</li>
+        <li><strong>Confronto IRRF:</strong> Compara os valores de IRRF retidos na Receita Federal com os registros do banco de dados interno.</li>
+    </ul>
+</div>
+
+<div class="grid-2">
+    <div class="card">
+        <h2>✅ Resultados Obtidos e Melhorias Futuras</h2>
+        <ul>
+            <li>Maior visibilidade financeira e redução drástica do tempo de análise manual.</li>
+            <li>Dados mais claros e visuais, impulsionando a melhoria na tomada de decisão.</li>
+            <li>Identificação de padrões históricos de fluxo de caixa invisíveis em tabelas normais.</li>
+            <li><strong>Perspectivas Futuras:</strong> Implementação de modelos preditivos, análises estatísticas avançadas e criação de alertas automáticos financeiros no sistema web.</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>🚧 Desafios Enfrentados</h2>
+        <ul>
+            <li>Transformar dados e um grande volume de informações financeiras complexas em gráficos simples, objetivos e de fácil interpretação para os gestores.</li>
+            <li>Garantir a segurança da informação durante todo o ciclo de vida do projeto (ex: criptografia de credenciais via Python e ofuscação de infraestrutura).</li>
+            <li>Respeitar estritamente as diretrizes da LGPD, processando apenas registros financeiros sem expor dados pessoais sensíveis.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <h2>📚 Referências Principais</h2>
+    <ul class="references-list">
+        <li><strong>Flask:</strong> <a href="https://flask.palletsprojects.com/" target="_blank">https://flask.palletsprojects.com/</a></li>
+        <li><strong>Flask-WTF:</strong> <a href="https://flask-wtf.readthedocs.io/" target="_blank">https://flask-wtf.readthedocs.io/</a></li>
+        <li><strong>WTForms:</strong> <a href="https://wtforms.readthedocs.io/" target="_blank">https://wtforms.readthedocs.io/</a></li>
+        <li><strong>Werkzeug:</strong> <a href="https://werkzeug.palletsprojects.com/" target="_blank">https://werkzeug.palletsprojects.com/</a></li>
+        <li><strong>fdb:</strong> <a href="https://pypi.org/project/fdb/" target="_blank">https://pypi.org/project/fdb/</a></li>
+        <li><strong>pandas:</strong> <a href="https://pandas.pydata.org/docs/" target="_blank">https://pandas.pydata.org/docs/</a></li>
+        <li><strong>python-dateutil:</strong> <a href="https://dateutil.readthedocs.io/" target="_blank">https://dateutil.readthedocs.io/</a></li>
+        <li><strong>matplotlib:</strong> <a href="https://matplotlib.org/stable/contents.html" target="_blank">https://matplotlib.org/stable/contents.html</a></li>
+        <li><strong>pdfplumber:</strong> <a href="https://github.com/jsvine/pdfplumber" target="_blank">https://github.com/jsvine/pdfplumber</a></li>
+        <li><strong>pikepdf:</strong> <a href="https://pikepdf.readthedocs.io/" target="_blank">https://pikepdf.readthedocs.io/</a></li>
+        <li><strong>psutil:</strong> <a href="https://psutil.readthedocs.io/" target="_blank">https://psutil.readthedocs.io/</a></li>
+        <li><strong>lxml:</strong> <a href="https://lxml.de/" target="_blank">https://lxml.de/</a></li>
+        <li><strong>cryptography:</strong> <a href="https://cryptography.io/" target="_blank">https://cryptography.io/</a></li>
+        <li><strong>cv2 (OpenCV):</strong> <a href="https://docs.opencv.org/" target="_blank">https://docs.opencv.org/</a></li>
+        <li><strong>numpy:</strong> <a href="https://numpy.org/doc/" target="_blank">https://numpy.org/doc/</a></li>
+        <li><strong>pyzbar:</strong> <a href="https://pypi.org/project/pyzbar/" target="_blank">https://pypi.org/project/pyzbar/</a></li>
+        <li><strong>pyperclip:</strong> <a href="https://pyperclip.readthedocs.io/" target="_blank">https://pyperclip.readthedocs.io/</a></li>
+        <li><strong>argparse:</strong> <a href="https://docs.python.org/3/library/argparse.html" target="_blank">https://docs.python.org/3/library/argparse.html</a></li>
+        <li><strong>base64:</strong> <a href="https://docs.python.org/3/library/base64.html" target="_blank">https://docs.python.org/3/library/base64.html</a></li>
+        <li><strong>collections:</strong> <a href="https://docs.python.org/3/library/collections.html" target="_blank">https://docs.python.org/3/library/collections.html</a></li>
+        <li><strong>csv:</strong> <a href="https://docs.python.org/3/library/csv.html" target="_blank">https://docs.python.org/3/library/csv.html</a></li>
+        <li><strong>dataclasses:</strong> <a href="https://docs.python.org/3/library/dataclasses.html" target="_blank">https://docs.python.org/3/library/dataclasses.html</a></li>
+        <li><strong>datetime:</strong> <a href="https://docs.python.org/3/library/datetime.html" target="_blank">https://docs.python.org/3/library/datetime.html</a></li>
+        <li><strong>decimal:</strong> <a href="https://docs.python.org/3/library/decimal.html" target="_blank">https://docs.python.org/3/library/decimal.html</a></li>
+        <li><strong>hashlib:</strong> <a href="https://docs.python.org/3/library/hashlib.html" target="_blank">https://docs.python.org/3/library/hashlib.html</a></li>
+        <li><strong>io:</strong> <a href="https://docs.python.org/3/library/io.html" target="_blank">https://docs.python.org/3/library/io.html</a></li>
+        <li><strong>logging:</strong> <a href="https://docs.python.org/3/library/logging.html" target="_blank">https://docs.python.org/3/library/logging.html</a></li>
+        <li><strong>os:</strong> <a href="https://docs.python.org/3/library/os.html" target="_blank">https://docs.python.org/3/library/os.html</a></li>
+        <li><strong>pathlib:</strong> <a href="https://docs.python.org/3/library/pathlib.html" target="_blank">https://docs.python.org/3/library/pathlib.html</a></li>
+        <li><strong>re:</strong> <a href="https://docs.python.org/3/library/re.html" target="_blank">https://docs.python.org/3/library/re.html</a></li>
+        <li><strong>secrets:</strong> <a href="https://docs.python.org/3/library/secrets.html" target="_blank">https://docs.python.org/3/library/secrets.html</a></li>
+        <li><strong>shutil:</strong> <a href="https://docs.python.org/3/library/shutil.html" target="_blank">https://docs.python.org/3/library/shutil.html</a></li>
+        <li><strong>string:</strong> <a href="https://docs.python.org/3/library/string.html" target="_blank">https://docs.python.org/3/library/string.html</a></li>
+        <li><strong>subprocess:</strong> <a href="https://docs.python.org/3/library/subprocess.html" target="_blank">https://docs.python.org/3/library/subprocess.html</a></li>
+        <li><strong>sys:</strong> <a href="https://docs.python.org/3/library/sys.html" target="_blank">https://docs.python.org/3/library/sys.html</a></li>
+        <li><strong>tempfile:</strong> <a href="https://docs.python.org/3/library/tempfile.html" target="_blank">https://docs.python.org/3/library/tempfile.html</a></li>
+        <li><strong>threading:</strong> <a href="https://docs.python.org/3/library/threading.html" target="_blank">https://docs.python.org/3/library/threading.html</a></li>
+        <li><strong>time:</strong> <a href="https://docs.python.org/3/library/time.html" target="_blank">https://docs.python.org/3/library/time.html</a></li>
+        <li><strong>traceback:</strong> <a href="https://docs.python.org/3/library/traceback.html" target="_blank">https://docs.python.org/3/library/traceback.html</a></li>
+        <li><strong>typing:</strong> <a href="https://docs.python.org/3/library/typing.html" target="_blank">https://docs.python.org/3/library/typing.html</a></li>
+        <li><strong>warnings:</strong> <a href="https://docs.python.org/3/library/warnings.html" target="_blank">https://docs.python.org/3/library/warnings.html</a></li>
+        <li><strong>webbrowser:</strong> <a href="https://docs.python.org/3/library/webbrowser.html" target="_blank">https://docs.python.org/3/library/webbrowser.html</a></li>
+        <li><strong>xml.etree.ElementTree:</strong> <a href="https://docs.python.org/3/library/xml.etree.elementtree.html" target="_blank">https://docs.python.org/3/library/xml.etree.elementtree.html</a></li>
+        <li><strong>zipfile:</strong> <a href="https://docs.python.org/3/library/zipfile.html" target="_blank">https://docs.python.org/3/library/zipfile.html</a></li>
+    </ul>
+</div>
+
+</div>
+
+<footer>
+    <p>Projeto de Extensão IV • Ciência de Dados • 2026</p>
+    <p>Autor: Delean Plince Mafra</p>
+</footer>
+
+</body>
+</html>
