@@ -101,13 +101,13 @@ Este é um **Projeto de Extensão Universitária (Pex IV)**, realizado como ativ
 - **Curso:** CST em Ciência de Dados  
 - **Semestre:** 4º Semestre  
 - **Instituição:** Descomplica Faculdade Digital / UniAmérica  
-- **Projeto:** Projeto de Extensão IV (Pex IV)  
+- **Projeto:** Projeto de Extensão IV (Pex 4)  
 - **Data:** 2026  
 
 ### 📊 **Tipo de Projeto**
 - **Natureza:** Projeto de Extensão Universitária  
-- **Escopo:** [EMPRESA AINDA NÃO FOI SELECIONADA]  
-- **Tecnologias:** A definir conforme andamento do projeto  
+- **Escopo:** PROJETO DE EXTENSÃO IV – COLETA DE INFORMAÇÔES  
+- **Tecnologias:** Python e SQL 
 
 </td>
 <td width="50%">
@@ -150,7 +150,7 @@ Se uma empresa deseja utilizar esta solução ou conceitos semelhantes em ambien
 
 ---
 
-**Última atualização:** Março de 2026  
+**Última atualização:** Julho de 2026  
 
 **DOI:** *(em definição)*  
 
