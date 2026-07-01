@@ -150,8 +150,8 @@ Se uma empresa deseja utilizar esta solução ou conceitos semelhantes em ambien
 
 ---
 
-**Última atualização:** Julho de 2026  
+**Última atualização:** Junho de 2026  
 
-**DOI:** *(em definição)*  
+**DOI:** [![DOI](https://zenodo.org/badge/1170118842.svg)](https://doi.org/10.5281/zenodo.21089754)  
 
 **Copyright © Delean Mafra - Todos os direitos reservados.*
