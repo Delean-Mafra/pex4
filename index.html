@@ -133,69 +133,102 @@ footer {
 <div class="container">
 
 <div class="card text-content">
-    <h2>📌 Sobre o Projeto e Desenvolvimento das Atividades</h2>
+    <h2>📌 Desenvolvimento das Atividades</h2>
     <p>
-        Este projeto de extensão foi desenvolvido em parceria com uma organização parceira, 
-        com foco na melhoria da análise financeira através de técnicas de Ciência de Dados.
+        Para dar início ao meu projeto de extensão, preenchi a Carta de Apresentação e selecionei a organização JOARLE DARIAN MAFRA - ME (56.889.361/0001-95) como instituição parceira para a realização das atividades.
     </p>
     <p>
-        Para dar início ao projeto, preenchi a Carta de Apresentação e selecionei a instituição parceira 
-        para a realização das atividades. Após a apresentação da proposta e a obtenção da autorização formal 
-        por meio do Termo de Autorização para Realização das Atividades Extensionistas, iniciei oficialmente o 
-        desenvolvimento do projeto. O principal objetivo foi transformar dados financeiros em informações visuais 
-        e estratégicas, facilitando a tomada de decisão.
+        Após apresentar a proposta e obter a autorização formal por meio do Termo de Autorização para Realização das Atividades Extensionistas, iniciei oficialmente o desenvolvimento do projeto.
     </p>
 </div>
 
 <div class="card text-content">
-    <h2>📊 Planejamento da Coleta de Dados e Problema Identificado</h2>
+    <h2>📊 Planejamento da Coleta de Dados</h2>
     <p>
-        A primeira etapa consistiu na elaboração de um plano de coleta de dados, no qual defini as fontes de informação 
-        que seriam utilizadas durante o projeto. Foram considerados dados obtidos por meio de interfaces de programação 
-        de aplicações (APIs) disponibilizadas pela organização, bem como informações provenientes de sua base de dados interna.
+        A primeira etapa consistiu na elaboração de um plano de coleta de dados, no qual defini as fontes de informação que seriam utilizadas durante o projeto. Considerei dados obtidos por meio de interfaces de programação de aplicações (APIs) disponibilizadas pela organização, bem como informações provenientes de sua base de dados interna.
     </p>
     <p>
-        Durante essa fase, identifiquei as variáveis relevantes e os fatores que influenciavam diretamente os problemas 
-        enfrentados pela organização. A análise inicial evidenciou que a principal dificuldade estava relacionada à baixa 
-        visibilidade das informações financeiras referentes às contas a pagar e às contas a receber.
+        Durante essa fase, identifiquei as variáveis relevantes e os fatores que influenciavam diretamente os problemas enfrentados pela organização. Durante a minha análise inicial, evidenciei que a principal dificuldade estava relacionada à baixa visibilidade das informações financeiras referentes às contas a pagar e às contas a receber.
     </p>
     <p>
-        Embora a organização já dispusesse de relatórios financeiros tradicionais e da Demonstração do Resultado do 
-        Exercício (DRE), esses documentos apresentavam os dados de forma predominantemente textual e tabular, dificultando 
-        a identificação de tendências, sazonalidades e variações das receitas e despesas ao longo do tempo. Essa limitação 
-        comprometia a agilidade e a qualidade do processo de tomada de decisão pelos gestores.
+        Embora a organização já dispusesse de relatórios financeiros tradicionais e da Demonstração do Resultado do Exercício (DRE), percebi que esses documentos apresentavam os dados de forma predominantemente textual e tabular, dificultando a identificação de tendências, sazonalidades e variações das receitas e despesas ao longo do tempo. Concluí que essa limitação comprometia a agilidade e a qualidade do processo de tomada de decisão pelos gestores.
     </p>
 </div>
 
 <div class="card text-content">
     <h2>🧠 Coleta de Informações</h2>
     <p>
-        A coleta das informações foi realizada utilizando os recursos disponibilizados pela própria organização. 
-        Os dados estruturados foram obtidos por meio da API corporativa, responsável pelo acesso às informações 
-        armazenadas no banco de dados relacional utilizado pela empresa.
+        Realizei a coleta das informações utilizando os recursos disponibilizados pela própria organização. Obtive os dados estruturados por meio da API corporativa, responsável pelo acesso às informações armazenadas no banco de dados relacional utilizado pela empresa.
     </p>
     <p>
-        A organização autorizou o acesso à estrutura do banco de dados para fins exclusivamente acadêmicos e de 
-        desenvolvimento da solução proposta. Embora o ambiente utilizasse uma ferramenta específica para consultas 
-        ao banco de dados, optei por utilizar o Visual Studio Code em conjunto com Python, empregando a biblioteca 
-        FDB para comunicação com o banco de dados e a extensão SQLTools para desenvolvimento e validação das consultas SQL.
+        A organização autorizou meu acesso à estrutura do banco de dados para fins exclusivamente acadêmicos e de desenvolvimento da solução proposta. Embora o ambiente utilizasse uma ferramenta específica para consultas ao banco de dados, optei por utilizar o Visual Studio Code em conjunto com Python, empregando a biblioteca FDB para comunicação com o banco de dados e a extensão SQLTools para desenvolvimento e validação das consultas SQL.
     </p>
     <p>
-        Como medida adicional de segurança da informação, desenvolvi uma biblioteca responsável por realizar a leitura 
-        automática das configurações de conexão existentes nos arquivos de configuração utilizados pela organização. 
-        As credenciais passaram a ser tratadas de forma criptografada, evitando sua exposição direta no código-fonte 
-        e reduzindo o risco de vazamento de informações sensíveis.
+        Como medida adicional de segurança da informação, desenvolvi uma biblioteca responsável por realizar a leitura automática das configurações de conexão existentes nos arquivos de configuração utilizados pela organização. Passei a tratar as credenciais de forma criptografada, evitando sua exposição direta no código-fonte e reduzindo o risco de vazamento de informações sensíveis.
     </p>
     <p>
-        Para garantir conformidade com a Lei Geral de Proteção de Dados (LGPD), limitei a coleta exclusivamente aos 
-        registros financeiros necessários para a execução do projeto. Não foram acessados ou processados dados pessoais 
-        de clientes, fornecedores ou colaboradores, restringindo a análise às informações relacionadas aos lançamentos 
-        financeiros utilizados na elaboração dos indicadores e das visualizações.
+        Para garantir conformidade com a Lei Geral de Proteção de Dados (LGPD), limitei a coleta exclusivamente aos registros financeiros necessários para a execução do projeto. Não acessei ou processei dados pessoais de clientes, fornecedores ou colaboradores, restringindo a minha análise às informações relacionadas aos lançamentos financeiros utilizados na elaboração dos indicadores e das visualizações.
     </p>
 </div>
 
+<div class="card text-content">
+    <h2>📈 Organização e Análise dos Dados</h2>
+    <p>
+        Como os dados disponibilizados pela organização já se encontravam estruturados, reduzi significativamente a necessidade de procedimentos de limpeza e transformação. Dessa forma, concentrei meus esforços na organização estratégica das informações e na construção de análises capazes de gerar conhecimento útil para a organização.
+    </p>
+    <p>
+        Desenvolvi as atividades utilizando SQL para extração das informações e Python para processamento, análise e apresentação dos resultados. Entre as principais bibliotecas que empreguei, destacam-se Flask, FDB, Pandas, NumPy, Matplotlib, Flask-WTF, WTForms, Werkzeug, Python-Dateutil, Cryptography, LXML, OpenCV e outras auxiliares.
+    </p>
+    <p>
+        Transformei as informações obtidas em representações gráficas por meio das bibliotecas Matplotlib e NumPy, o que me possibilitou a criação de séries temporais, gráficos comparativos e análises de composição das despesas e receitas. Essas visualizações facilitaram a minha identificação de tendências, oscilações financeiras e fatores que impactavam diretamente o fluxo de caixa da organização.
+    </p>
+    <p>
+        Além da geração dos gráficos, desenvolvi uma aplicação web utilizando o framework Flask, responsável por integrar as consultas, os indicadores e as representações visuais em painéis interativos. Essa abordagem permitiu que os dados fossem consultados de forma dinâmica, oferecendo aos gestores uma visão consolidada das informações financeiras.
+    </p>
+    <p>
+        A etapa de análise que conduzi ultrapassou o simples processamento técnico dos dados, buscando transformar informações isoladas em conhecimento capaz de apoiar decisões estratégicas. O cruzamento das informações me permitiu compreender padrões de comportamento financeiro, identificar períodos de maior concentração de despesas e acompanhar a evolução das receitas ao longo do tempo.
+    </p>
+</div>
+
+<div class="card text-content">
+    <h2>📄 Produção do Relatório Técnico</h2>
+    <p>
+        Após a conclusão das etapas de coleta, organização e análise dos dados, elaborei um relatório técnico com o objetivo de consolidar todo o trabalho que desenvolvi e documentar os principais resultados que obtive. Por questões de segurança da informação, a organização me pediu para anonimizar informações técnicas sensíveis, omitindo nomes internos do banco de dados e caminhos de arquivos.
+    </p>
+    <p>
+        Estruturei o relatório a partir das análises que realizei e das visualizações que desenvolvi durante o projeto. Incluí gráficos de evolução temporal, comparativos entre períodos, análises de receitas e despesas e tabelas consolidadas contendo os principais indicadores financeiros. Complementando essas representações, elaborei descrições técnicas que contextualizam os resultados encontrados e explicam sua importância para a gestão financeira da organização.
+    </p>
+    <p>
+        Minhas análises demonstraram que a utilização de painéis interativos e relatórios gráficos proporciona maior rapidez na identificação de tendências financeiras, reduz o tempo necessário para interpretação das informações e amplia a capacidade de acompanhamento dos indicadores ao longo do tempo. A comparação histórica também me possibilitou identificar padrões que dificilmente seriam percebidos utilizando apenas relatórios convencionais.
+    </p>
+    <p>
+        Como resultado, a organização passou a dispor de uma solução que desenvolvi, capaz de apoiar o processo de tomada de decisão por meio da análise visual dos dados financeiros, permitindo identificar variações de receitas e despesas, acompanhar a evolução do fluxo de caixa e subsidiar o planejamento financeiro com base em evidências.
+    </p>
+</div>
+
+<div class="grid-2">
+    <div class="card">
+        <h2>✅ Resultados e Evolução Futura</h2>
+        <p>A solução permitiu identificar padrões históricos de fluxo de caixa invisíveis em relatórios convencionais. Como oportunidade de evolução futura, entendo que a solução poderá incorporar:</p>
+        <ul>
+            <li>Indicadores preditivos e análises estatísticas avançadas.</li>
+            <li>Mecanismos automáticos de geração de alertas financeiros.</li>
+            <li>Ampliando o potencial como ferramenta de apoio à gestão estratégica.</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>🚧 Desafios Enfrentados</h2>
+        <ul>
+            <li>Transformar um grande volume de dados financeiros em informações objetivas e facilmente interpretáveis.</li>
+            <li>Garantir que toda a solução respeitasse os princípios de segurança da informação (criptografia e ofuscação).</li>
+            <li>Respeitar estritamente as diretrizes da LGPD, preservando a confidencialidade dos dados.</li>
+        </ul>
+    </div>
+</div>
+
 <div class="card">
-    <h2>⚙️ Tecnologias Utilizadas</h2>
+    <h2>⚙️ Tecnologias e Bibliotecas Empregadas</h2>
     <div class="grid">
         <div class="badge">Flask</div>
         <div class="badge">Flask-WTF</div>
@@ -216,139 +249,25 @@ footer {
         <div class="badge">pyperclip</div>
         <div class="badge">argparse</div>
         <div class="badge">base64</div>
-        <div class="badge">collections</div>
         <div class="badge">csv</div>
-        <div class="badge">dataclasses</div>
         <div class="badge">datetime</div>
         <div class="badge">decimal</div>
         <div class="badge">hashlib</div>
-        <div class="badge">io</div>
         <div class="badge">logging</div>
         <div class="badge">os</div>
         <div class="badge">pathlib</div>
         <div class="badge">re</div>
-        <div class="badge">secrets</div>
         <div class="badge">shutil</div>
-        <div class="badge">string</div>
         <div class="badge">subprocess</div>
-        <div class="badge">sys</div>
-        <div class="badge">tempfile</div>
         <div class="badge">threading</div>
-        <div class="badge">time</div>
-        <div class="badge">traceback</div>
-        <div class="badge">typing</div>
-        <div class="badge">warnings</div>
-        <div class="badge">webbrowser</div>
-        <div class="badge">xml.etree.ElementTree</div>
-        <div class="badge">zipfile</div>
-    </div>
-</div>
-
-<div class="card text-content">
-    <h2>📈 Organização e Análise dos Dados</h2>
-    <p>
-        Os dados disponibilizados pela organização já se encontravam estruturados, reduzindo significativamente a 
-        necessidade de procedimentos de limpeza e transformação. Dessa forma, concentrei os esforços na organização 
-        estratégica das informações e na construção de análises capazes de gerar conhecimento útil para a organização.
-    </p>
-    <p>
-        As atividades foram desenvolvidas utilizando SQL para extração das informações e Python para processamento, 
-        análise e apresentação dos resultados. Entre as principais bibliotecas empregadas destacam-se Flask, FDB, 
-        Pandas, NumPy, Matplotlib, Flask-WTF, WTForms, Werkzeug, Python-Dateutil, Cryptography, LXML, OpenCV e 
-        outras bibliotecas auxiliares responsáveis por operações de processamento, segurança, geração de arquivos e automação.
-    </p>
-    <p>
-        As informações obtidas foram transformadas em representações gráficas por meio das bibliotecas Matplotlib e 
-        NumPy, possibilitando a criação de séries temporais, gráficos comparativos e análises de composição das despesas 
-        e receitas. Essas visualizações facilitaram a identificação de tendências, oscilações financeiras e fatores que 
-        impactavam diretamente o fluxo de caixa da organização.
-    </p>
-    <p>
-        Além da geração dos gráficos, desenvolvi uma aplicação web utilizando o framework Flask, responsável por 
-        integrar as consultas, os indicadores e as representações visuais em painéis interativos. Essa abordagem 
-        permitiu que os dados fossem consultados de forma dinâmica, oferecendo aos gestores uma visão consolidada 
-        das informações financeiras.
-    </p>
-    <p>
-        A etapa de análise ultrapassou o simples processamento técnico dos dados, buscando transformar informações 
-        isoladas em conhecimento capaz de apoiar decisões estratégicas. O cruzamento das informações permitiu compreender 
-        padrões de comportamento financeiro, identificar períodos de maior concentração de despesas e acompanhar a 
-        evolução das receitas ao longo do tempo.
-    </p>
-</div>
-
-<div class="card text-content">
-    <h2>📄 Produção do Relatório Técnico</h2>
-    <p>
-        Após a conclusão das etapas de coleta, organização e análise dos dados, elaborei um relatório técnico com o 
-        objetivo de consolidar todo o trabalho desenvolvido e documentar os principais resultados obtidos. Por questões 
-        de segurança da informação, a organização pediu para anonimizar informações técnicas sensíveis, omitindo nomes 
-        internos do banco de dados, estruturas específicas, caminhos de arquivos e demais elementos que pudessem comprometer 
-        a infraestrutura tecnológica da empresa. Dessa forma, foi possível apresentar toda a metodologia empregada sem expor 
-        informações confidenciais.
-    </p>
-    <p>
-        O relatório foi estruturado a partir das análises realizadas e das visualizações desenvolvidas durante o projeto. 
-        Foram incluídos gráficos de evolução temporal, comparativos entre períodos, análises de receitas e despesas e 
-        tabelas consolidadas contendo os principais indicadores financeiros. Complementando essas representações, elaborei 
-        descrições técnicas que contextualizam os resultados encontrados e explicam sua importância para a gestão financeira 
-        da organização.
-    </p>
-    <p>
-        As análises demonstraram que a utilização de painéis interativos e relatórios gráficos proporciona maior rapidez 
-        na identificação de tendências financeiras, reduz o tempo necessário para interpretação das informações e amplia 
-        a capacidade de acompanhamento dos indicadores ao longo do tempo. A comparação histórica também possibilitou 
-        identificar padrões que dificilmente seriam percebidos utilizando apenas relatórios convencionais.
-    </p>
-    <p>
-        Como resultado, a organização passou a dispor de uma solução capaz de apoiar o processo de tomada de decisão por 
-        meio da análise visual dos dados financeiros, permitindo identificar variações de receitas e despesas, acompanhar 
-        a evolução do fluxo de caixa e subsidiar o planejamento financeiro com base em evidências.
-    </p>
-</div>
-
-<div class="card">
-    <h2>🌐 Sistema Web e Soluções Desenvolvidas</h2>
-    <p>
-        Foi criada uma aplicação web com Flask contendo dashboards interativos, visualização em tempo real 
-        e consultas dinâmicas. Entre as soluções integradas no sistema estão:
-    </p>
-    <ul>
-        <li><strong>DRE Financeiro Automatizado:</strong> Painéis completos para visualização do resultado e saldo por conta.</li>
-        <li><strong>Análise de Gastos por Categoria:</strong> Evolução dos gastos mensais, variação percentual e detalhamento das contas.</li>
-        <li><strong>Relatório de Lançamentos Duplicados:</strong> Ferramenta para localizar possíveis registros financeiros duplicados no banco de dados.</li>
-        <li><strong>Conciliação Bancária (OFX):</strong> Compara e concilia os lançamentos bancários (arquivo OFX) com os lançamentos do banco de dados, acusando transações não encontradas.</li>
-        <li><strong>Extrator de Dados de Boletos:</strong> Faz o upload de PDFs (condomínio, faculdade), extrai dados automaticamente e atualiza diretamente no banco de dados, eliminando o lançamento manual.</li>
-        <li><strong>Análise de Financiamento:</strong> Acompanha a evolução e variação percentual dos juros ao longo do tempo.</li>
-        <li><strong>Relatório de Gastos:</strong> Filtra valores por período, detalhando os centros de custos.</li>
-        <li><strong>Confronto IRRF:</strong> Compara os valores de IRRF retidos na Receita Federal com os registros do banco de dados interno.</li>
-    </ul>
-</div>
-
-<div class="grid-2">
-    <div class="card">
-        <h2>✅ Resultados Obtidos e Melhorias Futuras</h2>
-        <ul>
-            <li>Maior visibilidade financeira e redução drástica do tempo de análise manual.</li>
-            <li>Dados mais claros e visuais, impulsionando a melhoria na tomada de decisão.</li>
-            <li>Identificação de padrões históricos de fluxo de caixa invisíveis em tabelas normais.</li>
-            <li><strong>Perspectivas Futuras:</strong> Implementação de modelos preditivos, análises estatísticas avançadas e criação de alertas automáticos financeiros no sistema web.</li>
-        </ul>
-    </div>
-    
-    <div class="card">
-        <h2>🚧 Desafios Enfrentados</h2>
-        <ul>
-            <li>Transformar dados e um grande volume de informações financeiras complexas em gráficos simples, objetivos e de fácil interpretação para os gestores.</li>
-            <li>Garantir a segurança da informação durante todo o ciclo de vida do projeto (ex: criptografia de credenciais via Python e ofuscação de infraestrutura).</li>
-            <li>Respeitar estritamente as diretrizes da LGPD, processando apenas registros financeiros sem expor dados pessoais sensíveis.</li>
-        </ul>
     </div>
 </div>
 
 <div class="card">
     <h2>📚 Referências Principais</h2>
     <ul class="references-list">
+        <li><strong>Repositório do projeto:</strong> <a href="https://github.com/Delean-Mafra/pex4" target="_blank">https://github.com/Delean-Mafra/pex4</a></li>
+        <li><strong>Relatório web:</strong> <a href="https://delean-mafra.github.io/pex4/" target="_blank">https://delean-mafra.github.io/pex4/</a></li>
         <li><strong>Flask:</strong> <a href="https://flask.palletsprojects.com/" target="_blank">https://flask.palletsprojects.com/</a></li>
         <li><strong>Flask-WTF:</strong> <a href="https://flask-wtf.readthedocs.io/" target="_blank">https://flask-wtf.readthedocs.io/</a></li>
         <li><strong>WTForms:</strong> <a href="https://wtforms.readthedocs.io/" target="_blank">https://wtforms.readthedocs.io/</a></li>
@@ -400,7 +319,7 @@ footer {
 
 <footer>
     <p>Projeto de Extensão IV • Ciência de Dados • 2026</p>
-    <p>Autor: Delean Plince Mafra</p>
+    <p>Autor: Delean Plince Mafra • Centro Universitário União das Américas Descomplica</p>
 </footer>
 
 </body>
