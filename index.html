@@ -1,326 +1,303 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PEX IV - Ciência de Dados</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEX IV - Delean Plince Mafra (Padrão Acadêmico)</title>
+    <style>
+        :root {
+            --paper-bg: #ffffff;
+            --body-bg: #0f172a;
+            --text-color: #1e293b;
+            --accent: #0ea5e9;
+        }
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #0f172a;
-    color: #e2e8f0;
-    line-height: 1.6;
-}
+        body {
+            background-color: var(--body-bg);
+            margin: 0;
+            padding: 20px;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-header {
-    background: linear-gradient(90deg, #1e293b, #0ea5e9);
-    padding: 40px;
-    text-align: center;
-}
+        /* Simulação da Folha A4 */
+        .page {
+            background: var(--paper-bg);
+            width: 210mm;
+            height: 297mm;
+            padding: 30mm 20mm 20mm 30mm; /* Margens ABNT: Sup/Esq 3cm, Inf/Dir 2cm */
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            box-sizing: border-box;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
 
-header h1 {
-    margin: 0;
-    font-size: 2.2em;
-}
+        .active-page {
+            display: block;
+            animation: pageFlip 0.6s ease-in-out;
+        }
 
-header p {
-    opacity: 0.8;
-    margin-top: 10px;
-    font-size: 1.1em;
-}
+        @keyframes pageFlip {
+            from { opacity: 0; transform: rotateY(-10deg) translateX(30px); }
+            to { opacity: 1; transform: rotateY(0deg) translateX(0); }
+        }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-}
+        /* Estilos de Texto Acadêmico */
+        h1, h2, h3 { text-align: center; text-transform: uppercase; margin-bottom: 20px; }
+        h1 { font-size: 14pt; }
+        h2 { font-size: 12pt; margin-top: 50px; }
+        h3 { font-size: 12pt; text-align: left; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 30px; }
+        
+        p { text-align: justify; text-indent: 1.5cm; line-height: 1.5; font-size: 12pt; margin-bottom: 15px; }
+        
+        .resumo-box { font-style: italic; margin: 40px 0; line-height: 1.4; }
 
-.card {
-    background: #1e293b;
-    border-radius: 10px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
+        /* CAPA */
+        .capa {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            text-align: center;
+        }
+        .capa .titulo { font-size: 16pt; font-weight: bold; margin-top: 100px; }
 
-h2 {
-    color: #38bdf8;
-    border-bottom: 1px solid #334155;
-    padding-bottom: 8px;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        /* SUMÁRIO */
+        .sumario-list { list-style: none; padding: 0; }
+        .sumario-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px dotted #aaa;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .sumario-list li:hover { color: var(--accent); font-weight: bold; }
 
-.text-content p {
-    text-align: justify;
-    margin-bottom: 15px;
-    color: #cbd5e1;
-}
+        /* REFERÊNCIAS (Layout em Colunas para caber tudo) */
+        .refs-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            font-size: 9pt; /* Fonte menor para bibliografia extensa */
+            line-height: 1.2;
+        }
+        .refs-container div { margin-bottom: 8px; word-break: break-all; }
+        .refs-container strong { color: #000; }
 
-ul {
-    padding-left: 20px;
-    color: #cbd5e1;
-}
+        /* NAVEGAÇÃO */
+        .nav-controls {
+            position: fixed;
+            bottom: 25px;
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(5px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
 
-ul li {
-    margin-bottom: 8px;
-}
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover { transform: scale(1.05); background: #0ea5e9; }
+        button:disabled { background: #475569; opacity: 0.5; }
+        .page-counter { color: white; align-self: center; font-family: sans-serif; font-size: 0.9em; }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 25px;
-}
-
-.badge {
-    background: #0ea5e9;
-    color: #ffffff;
-    padding: 10px 15px;
-    border-radius: 6px;
-    font-size: 0.9em;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.references-list li {
-    word-break: break-all;
-    margin-bottom: 12px;
-}
-
-.references-list a {
-    color: #38bdf8;
-    text-decoration: none;
-}
-
-.references-list a:hover {
-    text-decoration: underline;
-}
-
-footer {
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 0.9em;
-    opacity: 0.7;
-    background: #1e293b;
-    margin-top: 40px;
-}
-</style>
+        @media print {
+            .nav-controls { display: none; }
+            .page { display: block; margin: 0; box-shadow: none; page-break-after: always; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Projeto de Extensão IV</h1>
-    <p>Ciência de Dados • Delean Plince Mafra</p>
-    <p><small>Centro Universitário União das Américas Descomplica</small></p>
-</header>
+    <!-- PÁGINA 1: CAPA -->
+    <div class="page active-page" id="p1">
+        <div class="capa">
+            <div>
+                <h1>Centro Universitário União das Américas Descomplica</h1>
+                <p style="text-align: center; text-indent: 0;">Tecnologia em Ciência de Dados</p>
+            </div>
+            
+            <div class="titulo">
+                RELATÓRIO DE PROJETO DE EXTENSÃO IV:<br>
+                ANÁLISE VISUAL DE DADOS FINANCEIROS
+            </div>
 
-<div class="container">
+            <div>
+                <p style="text-align: center; text-indent: 0; font-weight: bold;">DELEAN PLINCE MAFRA</p>
+            </div>
 
-<div class="card text-content">
-    <h2>📌 Desenvolvimento das Atividades</h2>
-    <p>
-        Para dar início ao meu projeto de extensão, preenchi a Carta de Apresentação e selecionei a organização JOARLE DARIAN MAFRA - ME (56.889.361/0001-95) como instituição parceira para a realização das atividades.
-    </p>
-    <p>
-        Após apresentar a proposta e obter a autorização formal por meio do Termo de Autorização para Realização das Atividades Extensionistas, iniciei oficialmente o desenvolvimento do projeto.
-    </p>
-</div>
+            <div style="margin-bottom: 40px; text-transform: uppercase;">
+                São José - SC<br>2026
+            </div>
+        </div>
+    </div>
 
-<div class="card text-content">
-    <h2>📊 Planejamento da Coleta de Dados</h2>
-    <p>
-        A primeira etapa consistiu na elaboração de um plano de coleta de dados, no qual defini as fontes de informação que seriam utilizadas durante o projeto. Considerei dados obtidos por meio de interfaces de programação de aplicações (APIs) disponibilizadas pela organização, bem como informações provenientes de sua base de dados interna.
-    </p>
-    <p>
-        Durante essa fase, identifiquei as variáveis relevantes e os fatores que influenciavam diretamente os problemas enfrentados pela organização. Durante a minha análise inicial, evidenciei que a principal dificuldade estava relacionada à baixa visibilidade das informações financeiras referentes às contas a pagar e às contas a receber.
-    </p>
-    <p>
-        Embora a organização já dispusesse de relatórios financeiros tradicionais e da Demonstração do Resultado do Exercício (DRE), percebi que esses documentos apresentavam os dados de forma predominantemente textual e tabular, dificultando a identificação de tendências, sazonalidades e variações das receitas e despesas ao longo do tempo. Concluí que essa limitação comprometia a agilidade e a qualidade do processo de tomada de decisão pelos gestores.
-    </p>
-</div>
+    <!-- PÁGINA 2: RESUMO -->
+    <div class="page" id="p2">
+        <h3>Resumo</h3>
+        <div class="resumo-box">
+            Este relatório descreve o desenvolvimento de uma solução de ciência de dados voltada para a melhoria da visibilidade financeira da organização Joarle Darian Mafra – ME. O projeto abordou a dificuldade de interpretação de relatórios tradicionais através da criação de painéis interativos utilizando Python e o framework Flask. A metodologia compreendeu desde o planejamento da coleta via APIs corporativas até a implementação de visualizações gráficas de fluxo de caixa e conciliação bancária. Os resultados demonstram que a análise visual reduz o tempo de interpretação de tendências e sazonalidades, fornecendo subsídios técnicos para a tomada de decisão estratégica dos gestores.
+        </div>
+        <p style="text-indent: 0;"><strong>Palavras-chave:</strong> ciência de dados; análise financeira; visualização de dados; Python; Flask.</p>
+    </div>
 
-<div class="card text-content">
-    <h2>🧠 Coleta de Informações</h2>
-    <p>
-        Realizei a coleta das informações utilizando os recursos disponibilizados pela própria organização. Obtive os dados estruturados por meio da API corporativa, responsável pelo acesso às informações armazenadas no banco de dados relacional utilizado pela empresa.
-    </p>
-    <p>
-        A organização autorizou meu acesso à estrutura do banco de dados para fins exclusivamente acadêmicos e de desenvolvimento da solução proposta. Embora o ambiente utilizasse uma ferramenta específica para consultas ao banco de dados, optei por utilizar o Visual Studio Code em conjunto com Python, empregando a biblioteca FDB para comunicação com o banco de dados e a extensão SQLTools para desenvolvimento e validação das consultas SQL.
-    </p>
-    <p>
-        Como medida adicional de segurança da informação, desenvolvi uma biblioteca responsável por realizar a leitura automática das configurações de conexão existentes nos arquivos de configuração utilizados pela organização. Passei a tratar as credenciais de forma criptografada, evitando sua exposição direta no código-fonte e reduzindo o risco de vazamento de informações sensíveis.
-    </p>
-    <p>
-        Para garantir conformidade com a Lei Geral de Proteção de Dados (LGPD), limitei a coleta exclusivamente aos registros financeiros necessários para a execução do projeto. Não acessei ou processei dados pessoais de clientes, fornecedores ou colaboradores, restringindo a minha análise às informações relacionadas aos lançamentos financeiros utilizados na elaboração dos indicadores e das visualizações.
-    </p>
-</div>
-
-<div class="card text-content">
-    <h2>📈 Organização e Análise dos Dados</h2>
-    <p>
-        Como os dados disponibilizados pela organização já se encontravam estruturados, reduzi significativamente a necessidade de procedimentos de limpeza e transformação. Dessa forma, concentrei meus esforços na organização estratégica das informações e na construção de análises capazes de gerar conhecimento útil para a organização.
-    </p>
-    <p>
-        Desenvolvi as atividades utilizando SQL para extração das informações e Python para processamento, análise e apresentação dos resultados. Entre as principais bibliotecas que empreguei, destacam-se Flask, FDB, Pandas, NumPy, Matplotlib, Flask-WTF, WTForms, Werkzeug, Python-Dateutil, Cryptography, LXML, OpenCV e outras auxiliares.
-    </p>
-    <p>
-        Transformei as informações obtidas em representações gráficas por meio das bibliotecas Matplotlib e NumPy, o que me possibilitou a criação de séries temporais, gráficos comparativos e análises de composição das despesas e receitas. Essas visualizações facilitaram a minha identificação de tendências, oscilações financeiras e fatores que impactavam diretamente o fluxo de caixa da organização.
-    </p>
-    <p>
-        Além da geração dos gráficos, desenvolvi uma aplicação web utilizando o framework Flask, responsável por integrar as consultas, os indicadores e as representações visuais em painéis interativos. Essa abordagem permitiu que os dados fossem consultados de forma dinâmica, oferecendo aos gestores uma visão consolidada das informações financeiras.
-    </p>
-    <p>
-        A etapa de análise que conduzi ultrapassou o simples processamento técnico dos dados, buscando transformar informações isoladas em conhecimento capaz de apoiar decisões estratégicas. O cruzamento das informações me permitiu compreender padrões de comportamento financeiro, identificar períodos de maior concentração de despesas e acompanhar a evolução das receitas ao longo do tempo.
-    </p>
-</div>
-
-<div class="card text-content">
-    <h2>📄 Produção do Relatório Técnico</h2>
-    <p>
-        Após a conclusão das etapas de coleta, organização e análise dos dados, elaborei um relatório técnico com o objetivo de consolidar todo o trabalho que desenvolvi e documentar os principais resultados que obtive. Por questões de segurança da informação, a organização me pediu para anonimizar informações técnicas sensíveis, omitindo nomes internos do banco de dados e caminhos de arquivos.
-    </p>
-    <p>
-        Estruturei o relatório a partir das análises que realizei e das visualizações que desenvolvi durante o projeto. Incluí gráficos de evolução temporal, comparativos entre períodos, análises de receitas e despesas e tabelas consolidadas contendo os principais indicadores financeiros. Complementando essas representações, elaborei descrições técnicas que contextualizam os resultados encontrados e explicam sua importância para a gestão financeira da organização.
-    </p>
-    <p>
-        Minhas análises demonstraram que a utilização de painéis interativos e relatórios gráficos proporciona maior rapidez na identificação de tendências financeiras, reduz o tempo necessário para interpretação das informações e amplia a capacidade de acompanhamento dos indicadores ao longo do tempo. A comparação histórica também me possibilitou identificar padrões que dificilmente seriam percebidos utilizando apenas relatórios convencionais.
-    </p>
-    <p>
-        Como resultado, a organização passou a dispor de uma solução que desenvolvi, capaz de apoiar o processo de tomada de decisão por meio da análise visual dos dados financeiros, permitindo identificar variações de receitas e despesas, acompanhar a evolução do fluxo de caixa e subsidiar o planejamento financeiro com base em evidências.
-    </p>
-</div>
-
-<div class="grid-2">
-    <div class="card">
-        <h2>✅ Resultados e Evolução Futura</h2>
-        <p>A solução permitiu identificar padrões históricos de fluxo de caixa invisíveis em relatórios convencionais. Como oportunidade de evolução futura, entendo que a solução poderá incorporar:</p>
-        <ul>
-            <li>Indicadores preditivos e análises estatísticas avançadas.</li>
-            <li>Mecanismos automáticos de geração de alertas financeiros.</li>
-            <li>Ampliando o potencial como ferramenta de apoio à gestão estratégica.</li>
+    <!-- PÁGINA 3: SUMÁRIO -->
+    <div class="page" id="p3">
+        <h3>Sumário</h3>
+        <ul class="sumario-list">
+            <li onclick="goToPage(4)"><span>1. INTRODUÇÃO</span> <span>04</span></li>
+            <li onclick="goToPage(5)"><span>2. PLANEJAMENTO E COLETA DE DADOS</span> <span>05</span></li>
+            <li onclick="goToPage(6)"><span>3. ORGANIZAÇÃO E ANÁLISE DOS DADOS</span> <span>06</span></li>
+            <li onclick="goToPage(7)"><span>4. RESULTADOS E SOLUÇÕES DESENVOLVIDAS</span> <span>07</span></li>
+            <li onclick="goToPage(8)"><span>5. CONCLUSÃO</span> <span>08</span></li>
+            <li onclick="goToPage(9)"><span>REFERÊNCIAS BIBLIOGRÁFICAS</span> <span>09</span></li>
         </ul>
     </div>
-    
-    <div class="card">
-        <h2>🚧 Desafios Enfrentados</h2>
+
+    <!-- PÁGINA 4: INTRODUÇÃO -->
+    <div class="page" id="p4">
+        <h3>1. Introdução</h3>
+        <p>O presente projeto de extensão iniciou-se com a seleção da organização JOARLE DARIAN MAFRA – ME como instituição parceira para a realização das atividades extensionistas.</p>
+        <p>A motivação central para o trabalho surgiu da identificação de que a principal dificuldade da empresa residia na baixa visibilidade das informações financeiras relativas às contas a pagar e a receber. A ausência de ferramentas de BI impedia o acompanhamento ágil de indicadores.</p>
+        <p>Embora a organização já utilizasse documentos como a Demonstração do Resultado do Exercício (DRE), a apresentação textual dificultava a identificação de tendências. O objetivo deste trabalho foi desenvolver uma ferramenta de análise visual para agilizar a tomada de decisão.</p>
+    </div>
+
+    <!-- PÁGINA 5: PLANEJAMENTO -->
+    <div class="page" id="p5">
+        <h3>2. Planejamento e Coleta de Dados</h3>
+        <p>A primeira etapa consistiu na definição das fontes de informação, utilizando interfaces de programação de aplicações (APIs) e a base de dados interna da organização parceira.</p>
+        <p>Para o acesso estruturado, utilizou-se o Visual Studio Code integrado ao Python, empregando a biblioteca FDB para comunicação direta com o banco de dados relacional (Firebird) e SQLTools para validação das consultas.</p>
+        <p>Priorizando a segurança da informação (LGPD), desenvolveu-se uma camada de criptografia para as credenciais de acesso. A coleta restringiu-se estritamente aos registros financeiros necessários, protegendo dados sensíveis de terceiros.</p>
+    </div>
+
+    <!-- PÁGINA 6: ORGANIZAÇÃO -->
+    <div class="page" id="p6">
+        <h3>3. Organização e Análise dos Dados</h3>
+        <p>Dada a natureza estruturada dos dados originais, o esforço concentrou-se no processamento e na construção de análises estratégicas via Pandas e NumPy.</p>
+        <p>A transformação de dados brutos em conhecimento foi viabilizada pela criação de séries temporais e gráficos comparativos através da biblioteca Matplotlib, integrada ao ambiente web Flask.</p>
+        <p>Esta abordagem permitiu o cruzamento de informações para compreender padrões de comportamento financeiro e identificar períodos de maior concentração de despesas, ultrapassando o simples processamento técnico e gerando valor gerencial.</p>
+    </div>
+
+    <!-- PÁGINA 7: RESULTADOS -->
+    <div class="page" id="p7">
+        <h3>4. Resultados e Soluções Desenvolvidas</h3>
+        <p>Como produto final, foi entregue uma aplicação web baseada no framework Flask, que integra indicadores em painéis interativos.</p>
+        <p>As funcionalidades de maior impacto foram:</p>
         <ul>
-            <li>Transformar um grande volume de dados financeiros em informações objetivas e facilmente interpretáveis.</li>
-            <li>Garantir que toda a solução respeitasse os princípios de segurança da informação (criptografia e ofuscação).</li>
-            <li>Respeitar estritamente as diretrizes da LGPD, preservando a confidencialidade dos dados.</li>
+            <li><strong>DRE Financeiro Automatizado:</strong> Saldo e resultados por conta.</li>
+            <li><strong>Conciliação OFX:</strong> Cruzamento automático de extratos bancários.</li>
+            <li><strong>Extrator de Boletos:</strong> Processamento de PDFs para evitar lançamento manual.</li>
+            <li><strong>Análise de Gastos:</strong> Visão detalhada por centros de custo e sazonalidade.</li>
         </ul>
     </div>
-</div>
 
-<div class="card">
-    <h2>⚙️ Tecnologias e Bibliotecas Empregadas</h2>
-    <div class="grid">
-        <div class="badge">Flask</div>
-        <div class="badge">Flask-WTF</div>
-        <div class="badge">WTForms</div>
-        <div class="badge">Werkzeug</div>
-        <div class="badge">fdb</div>
-        <div class="badge">pandas</div>
-        <div class="badge">python-dateutil</div>
-        <div class="badge">matplotlib</div>
-        <div class="badge">pdfplumber</div>
-        <div class="badge">pikepdf</div>
-        <div class="badge">psutil</div>
-        <div class="badge">lxml</div>
-        <div class="badge">cryptography</div>
-        <div class="badge">cv2 (OpenCV)</div>
-        <div class="badge">numpy</div>
-        <div class="badge">pyzbar</div>
-        <div class="badge">pyperclip</div>
-        <div class="badge">argparse</div>
-        <div class="badge">base64</div>
-        <div class="badge">csv</div>
-        <div class="badge">datetime</div>
-        <div class="badge">decimal</div>
-        <div class="badge">hashlib</div>
-        <div class="badge">logging</div>
-        <div class="badge">os</div>
-        <div class="badge">pathlib</div>
-        <div class="badge">re</div>
-        <div class="badge">shutil</div>
-        <div class="badge">subprocess</div>
-        <div class="badge">threading</div>
+    <!-- PÁGINA 8: CONCLUSÃO -->
+    <div class="page" id="p8">
+        <h3>5. Conclusão</h3>
+        <p>O desenvolvimento do projeto demonstrou que a utilização de painéis interativos proporciona uma rapidez significativamente maior na identificação de tendências financeiras em comparação a relatórios tradicionais.</p>
+        <p>A solução desenvolvida apoia o planejamento estratégico ao fundamentar decisões em evidências visuais. Os desafios de transformar grandes volumes de dados foram superados com o uso de Python.</p>
+        <p>Como evolução futura, planeja-se a implementação de modelos preditivos para antecipar o fluxo de caixa com base no histórico processado durante este projeto.</p>
     </div>
-</div>
 
-<div class="card">
-    <h2>📚 Referências Principais</h2>
-    <ul class="references-list">
-        <li><strong>Repositório do projeto:</strong> <a href="https://github.com/Delean-Mafra/pex4" target="_blank">https://github.com/Delean-Mafra/pex4</a></li>
-        <li><strong>Relatório web:</strong> <a href="https://delean-mafra.github.io/pex4/" target="_blank">https://delean-mafra.github.io/pex4/</a></li>
-        <li><strong>Flask:</strong> <a href="https://flask.palletsprojects.com/" target="_blank">https://flask.palletsprojects.com/</a></li>
-        <li><strong>Flask-WTF:</strong> <a href="https://flask-wtf.readthedocs.io/" target="_blank">https://flask-wtf.readthedocs.io/</a></li>
-        <li><strong>WTForms:</strong> <a href="https://wtforms.readthedocs.io/" target="_blank">https://wtforms.readthedocs.io/</a></li>
-        <li><strong>Werkzeug:</strong> <a href="https://werkzeug.palletsprojects.com/" target="_blank">https://werkzeug.palletsprojects.com/</a></li>
-        <li><strong>fdb:</strong> <a href="https://pypi.org/project/fdb/" target="_blank">https://pypi.org/project/fdb/</a></li>
-        <li><strong>pandas:</strong> <a href="https://pandas.pydata.org/docs/" target="_blank">https://pandas.pydata.org/docs/</a></li>
-        <li><strong>python-dateutil:</strong> <a href="https://dateutil.readthedocs.io/" target="_blank">https://dateutil.readthedocs.io/</a></li>
-        <li><strong>matplotlib:</strong> <a href="https://matplotlib.org/stable/contents.html" target="_blank">https://matplotlib.org/stable/contents.html</a></li>
-        <li><strong>pdfplumber:</strong> <a href="https://github.com/jsvine/pdfplumber" target="_blank">https://github.com/jsvine/pdfplumber</a></li>
-        <li><strong>pikepdf:</strong> <a href="https://pikepdf.readthedocs.io/" target="_blank">https://pikepdf.readthedocs.io/</a></li>
-        <li><strong>psutil:</strong> <a href="https://psutil.readthedocs.io/" target="_blank">https://psutil.readthedocs.io/</a></li>
-        <li><strong>lxml:</strong> <a href="https://lxml.de/" target="_blank">https://lxml.de/</a></li>
-        <li><strong>cryptography:</strong> <a href="https://cryptography.io/" target="_blank">https://cryptography.io/</a></li>
-        <li><strong>cv2 (OpenCV):</strong> <a href="https://docs.opencv.org/" target="_blank">https://docs.opencv.org/</a></li>
-        <li><strong>numpy:</strong> <a href="https://numpy.org/doc/" target="_blank">https://numpy.org/doc/</a></li>
-        <li><strong>pyzbar:</strong> <a href="https://pypi.org/project/pyzbar/" target="_blank">https://pypi.org/project/pyzbar/</a></li>
-        <li><strong>pyperclip:</strong> <a href="https://pyperclip.readthedocs.io/" target="_blank">https://pyperclip.readthedocs.io/</a></li>
-        <li><strong>argparse:</strong> <a href="https://docs.python.org/3/library/argparse.html" target="_blank">https://docs.python.org/3/library/argparse.html</a></li>
-        <li><strong>base64:</strong> <a href="https://docs.python.org/3/library/base64.html" target="_blank">https://docs.python.org/3/library/base64.html</a></li>
-        <li><strong>collections:</strong> <a href="https://docs.python.org/3/library/collections.html" target="_blank">https://docs.python.org/3/library/collections.html</a></li>
-        <li><strong>csv:</strong> <a href="https://docs.python.org/3/library/csv.html" target="_blank">https://docs.python.org/3/library/csv.html</a></li>
-        <li><strong>dataclasses:</strong> <a href="https://docs.python.org/3/library/dataclasses.html" target="_blank">https://docs.python.org/3/library/dataclasses.html</a></li>
-        <li><strong>datetime:</strong> <a href="https://docs.python.org/3/library/datetime.html" target="_blank">https://docs.python.org/3/library/datetime.html</a></li>
-        <li><strong>decimal:</strong> <a href="https://docs.python.org/3/library/decimal.html" target="_blank">https://docs.python.org/3/library/decimal.html</a></li>
-        <li><strong>hashlib:</strong> <a href="https://docs.python.org/3/library/hashlib.html" target="_blank">https://docs.python.org/3/library/hashlib.html</a></li>
-        <li><strong>io:</strong> <a href="https://docs.python.org/3/library/io.html" target="_blank">https://docs.python.org/3/library/io.html</a></li>
-        <li><strong>logging:</strong> <a href="https://docs.python.org/3/library/logging.html" target="_blank">https://docs.python.org/3/library/logging.html</a></li>
-        <li><strong>os:</strong> <a href="https://docs.python.org/3/library/os.html" target="_blank">https://docs.python.org/3/library/os.html</a></li>
-        <li><strong>pathlib:</strong> <a href="https://docs.python.org/3/library/pathlib.html" target="_blank">https://docs.python.org/3/library/pathlib.html</a></li>
-        <li><strong>re:</strong> <a href="https://docs.python.org/3/library/re.html" target="_blank">https://docs.python.org/3/library/re.html</a></li>
-        <li><strong>secrets:</strong> <a href="https://docs.python.org/3/library/secrets.html" target="_blank">https://docs.python.org/3/library/secrets.html</a></li>
-        <li><strong>shutil:</strong> <a href="https://docs.python.org/3/library/shutil.html" target="_blank">https://docs.python.org/3/library/shutil.html</a></li>
-        <li><strong>string:</strong> <a href="https://docs.python.org/3/library/string.html" target="_blank">https://docs.python.org/3/library/string.html</a></li>
-        <li><strong>subprocess:</strong> <a href="https://docs.python.org/3/library/subprocess.html" target="_blank">https://docs.python.org/3/library/subprocess.html</a></li>
-        <li><strong>sys:</strong> <a href="https://docs.python.org/3/library/sys.html" target="_blank">https://docs.python.org/3/library/sys.html</a></li>
-        <li><strong>tempfile:</strong> <a href="https://docs.python.org/3/library/tempfile.html" target="_blank">https://docs.python.org/3/library/tempfile.html</a></li>
-        <li><strong>threading:</strong> <a href="https://docs.python.org/3/library/threading.html" target="_blank">https://docs.python.org/3/library/threading.html</a></li>
-        <li><strong>time:</strong> <a href="https://docs.python.org/3/library/time.html" target="_blank">https://docs.python.org/3/library/time.html</a></li>
-        <li><strong>traceback:</strong> <a href="https://docs.python.org/3/library/traceback.html" target="_blank">https://docs.python.org/3/library/traceback.html</a></li>
-        <li><strong>typing:</strong> <a href="https://docs.python.org/3/library/typing.html" target="_blank">https://docs.python.org/3/library/typing.html</a></li>
-        <li><strong>warnings:</strong> <a href="https://docs.python.org/3/library/warnings.html" target="_blank">https://docs.python.org/3/library/warnings.html</a></li>
-        <li><strong>webbrowser:</strong> <a href="https://docs.python.org/3/library/webbrowser.html" target="_blank">https://docs.python.org/3/library/webbrowser.html</a></li>
-        <li><strong>xml.etree.ElementTree:</strong> <a href="https://docs.python.org/3/library/xml.etree.elementtree.html" target="_blank">https://docs.python.org/3/library/xml.etree.elementtree.html</a></li>
-        <li><strong>zipfile:</strong> <a href="https://docs.python.org/3/library/zipfile.html" target="_blank">https://docs.python.org/3/library/zipfile.html</a></li>
-    </ul>
-</div>
+    <!-- PÁGINA 9: REFERÊNCIAS -->
+    <div class="page" id="p9">
+        <h3>Referências Bibliográficas</h3>
+        <div class="refs-container">
+            <div><strong>Flask:</strong> https://flask.palletsprojects.com/</div>
+            <div><strong>Flask-WTF:</strong> https://flask-wtf.readthedocs.io/</div>
+            <div><strong>WTForms:</strong> https://wtforms.readthedocs.io/</div>
+            <div><strong>Werkzeug:</strong> https://werkzeug.palletsprojects.com/</div>
+            <div><strong>fdb:</strong> https://pypi.org/project/fdb/</div>
+            <div><strong>pandas:</strong> https://pandas.pydata.org/docs/</div>
+            <div><strong>python-dateutil:</strong> https://dateutil.readthedocs.io/</div>
+            <div><strong>matplotlib:</strong> https://matplotlib.org/stable/contents.html</div>
+            <div><strong>pdfplumber:</strong> https://github.com/jsvine/pdfplumber</div>
+            <div><strong>pikepdf:</strong> https://pikepdf.readthedocs.io/</div>
+            <div><strong>psutil:</strong> https://psutil.readthedocs.io/</div>
+            <div><strong>lxml:</strong> https://lxml.de/</div>
+            <div><strong>cryptography:</strong> https://cryptography.io/</div>
+            <div><strong>cv2 (OpenCV):</strong> https://docs.opencv.org/</div>
+            <div><strong>numpy:</strong> https://numpy.org/doc/</div>
+            <div><strong>pyzbar:</strong> https://pypi.org/project/pyzbar/</div>
+            <div><strong>pyperclip:</strong> https://pyperclip.readthedocs.io/</div>
+            <div><strong>argparse:</strong> docs.python.org/3/library/argparse.html</div>
+            <div><strong>base64:</strong> docs.python.org/3/library/base64.html</div>
+            <div><strong>collections:</strong> docs.python.org/3/library/collections.html</div>
+            <div><strong>csv:</strong> docs.python.org/3/library/csv.html</div>
+            <div><strong>dataclasses:</strong> docs.python.org/3/library/dataclasses.html</div>
+            <div><strong>datetime:</strong> docs.python.org/3/library/datetime.html</div>
+            <div><strong>decimal:</strong> docs.python.org/3/library/decimal.html</div>
+            <div><strong>hashlib:</strong> docs.python.org/3/library/hashlib.html</div>
+            <div><strong>io:</strong> docs.python.org/3/library/io.html</div>
+            <div><strong>logging:</strong> docs.python.org/3/library/logging.html</div>
+            <div><strong>os:</strong> docs.python.org/3/library/os.html</div>
+            <div><strong>pathlib:</strong> docs.python.org/3/library/pathlib.html</div>
+            <div><strong>re:</strong> docs.python.org/3/library/re.html</div>
+            <div><strong>secrets:</strong> docs.python.org/3/library/secrets.html</div>
+            <div><strong>shutil:</strong> docs.python.org/3/library/shutil.html</div>
+            <div><strong>string:</strong> docs.python.org/3/library/string.html</div>
+            <div><strong>subprocess:</strong> docs.python.org/3/library/subprocess.html</div>
+            <div><strong>sys:</strong> docs.python.org/3/library/sys.html</div>
+            <div><strong>tempfile:</strong> docs.python.org/3/library/tempfile.html</div>
+            <div><strong>threading:</strong> docs.python.org/3/library/threading.html</div>
+            <div><strong>time:</strong> docs.python.org/3/library/time.html</div>
+            <div><strong>traceback:</strong> docs.python.org/3/library/traceback.html</div>
+            <div><strong>typing:</strong> docs.python.org/3/library/typing.html</div>
+            <div><strong>warnings:</strong> docs.python.org/3/library/warnings.html</div>
+            <div><strong>webbrowser:</strong> docs.python.org/3/library/webbrowser.html</div>
+            <div><strong>ElementTree:</strong> docs.python.org/3/library/xml.etree.html</div>
+            <div><strong>zipfile:</strong> docs.python.org/3/library/zipfile.html</div>
+        </div>
+    </div>
 
-</div>
+    <!-- CONTROLES DE NAVEGAÇÃO -->
+    <div class="nav-controls">
+        <button id="prevBtn" onclick="changePage(-1)" disabled>Anterior</button>
+        <div class="page-counter">PÁGINA <span id="pageNum">1</span> / 9</div>
+        <button id="nextBtn" onclick="changePage(1)">Próxima</button>
+    </div>
 
-<footer>
-    <p>Projeto de Extensão IV • Ciência de Dados • 2026</p>
-    <p>Autor: Delean Plince Mafra • Centro Universitário União das Américas Descomplica</p>
-</footer>
+    <script>
+        let currentPage = 1;
+        const totalPages = 9;
 
+        function updateControls() {
+            document.getElementById('pageNum').innerText = currentPage;
+            document.getElementById('prevBtn').disabled = (currentPage === 1);
+            document.getElementById('nextBtn').disabled = (currentPage === totalPages);
+            window.scrollTo(0, 0);
+        }
+
+        function changePage(step) {
+            document.getElementById(`p${currentPage}`).classList.remove('active-page');
+            currentPage += step;
+            document.getElementById(`p${currentPage}`).classList.add('active-page');
+            updateControls();
+        }
+
+        function goToPage(num) {
+            document.getElementById(`p${currentPage}`).classList.remove('active-page');
+            currentPage = num;
+            document.getElementById(`p${currentPage}`).classList.add('active-page');
+            updateControls();
+        }
+    </script>
 </body>
 </html>
