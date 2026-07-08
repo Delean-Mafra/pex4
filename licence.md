@@ -10,7 +10,7 @@ Este é um **Projeto de Extensão Universitária (Pex IV)**, realizado como ativ
 **PROTEÇÃO LEGAL E LICENCIAMENTO**
 
 ---
-
+<div align="center">
 ![Creative Commons License](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc.svg)
 
 **Licença:** [CC BY-NC 4.0](http://delean-mafra.github.io/pex4/CC_BY_NC_4.0)
